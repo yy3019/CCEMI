@@ -1,0 +1,19 @@
+Package: CICI
+Type: Package
+Title: Multiple Imputation of More than One Exposure with Non-differential Measurement Error
+Version: 0.1.0
+Author: Yuanzhi Yu, Qixuan Chen
+Maintainer: Yuanzhi Yu <yuanzhi.yu@northwestern.edu>
+Authors@R: 
+    c(person("Yuanzhi","Yu",
+                     email = "yuanzhi.yu@northwestern.edu", role = c("aut", "cre")),
+      person("Qixuan","Chen",
+                     email = "qc2138@cumc.columbia.edu", role = c("aut", "cre")))
+Description: Constrained Iterative Conditional Imputation (CICI) treats the true concentrations in the new samples as missing and utilize multiple imputation to fill in these values based on the non-differential measurement error (NDME) assumption. We further extend the CICI method to the setting when some of exposure measures are only known to be below some thresholds or limits of detection (LODs). 
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    bootImpute,
+    mice
+RoxygenNote: 7.2.1

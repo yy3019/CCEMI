@@ -30,7 +30,7 @@
 library(bootImpute)
 library(mice)
 
-CICI_LOD = function(data, predM, nCalib, nMain, model, upper_bound, nImp = 2, nBoot = 20, seed = 666){
+CICI_LOD = function(data, predM, nCalib, nMain, model, upper_bound, nImp = 2, nBoot = 20, seed = NA){
 imp2 = data %>% as.tibble()
 impOnce <- function(inputData,M) {
   miceImps <- mice::mice(inputData, m=M, maxit = 20, print = F, method = method, predictorMatrix = predM, upper_bound = upper_bound, type_c = colnames(imp2)) #, remove.collinear = FALSE
@@ -41,7 +41,7 @@ impOnce <- function(inputData,M) {
   imps
 }
 
-impst = bootImpute(imp2, impOnce, nBoot=nBoot, nImp = nImp, seed = seed, M = nImp)
+impst = bootImpute(imp2, impOnce, nBoot=nBoot, nImp = nImp, M = nImp)
 
 imp_complete = complete(mice(inputData, m=M, maxit = 20, print = F, method = method, predictorMatrix = predM))
 

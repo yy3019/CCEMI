@@ -41,7 +41,7 @@ impOnce <- function(inputData,M) {
   }
   imps
 }
-impst = bootImpute(imp1, impOnce, nBoot=nBoot, nImp = nImp, seed = seed, M = nImp)
+impst = bootImpute(imp1, impOnce, nBoot=nBoot, nImp = nImp, M = nImp)
 
 imp_complete = complete(mice(inputData, m=M, maxit = 20, print = F, method = "norm", predictorMatrix = predM))
 

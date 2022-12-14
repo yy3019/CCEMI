@@ -15,10 +15,10 @@
 #' @return impst: A list of imputed datasets. imp_complete: Complete imputed data. result: Point estimate, ci, variance
 #' @author Yuanzhi Yu, Qixuan Chen
 #' @seealso \code{\link[tools]{file_ext}}, \code{\link[tools]{file_path_sans_ext}}
-#' @references \url{https://github.com/yihui/rmini}
+#' @references \url{https://github.com/yy3019/CICI}
 #' @importFrom bootImpute mice
 #' @export
-#' @examples CICI(df1)
+#' @examples see \url{https://github.com/yy3019/CICI}
 #' @name CICI
 #'
 #'
@@ -29,7 +29,7 @@
 library(bootImpute)
 library(mice)
 
-CICI = function(data, predM, nCalib, nMain, model, nImp = 2, nBoot = 20, seed = NA, ...){
+CICI = function(data, predM, nCalib, nMain, model, nImp = 2, nBoot = 20, ...){
 
 imp1 = data %>% as.tibble()
 
@@ -43,7 +43,7 @@ impOnce <- function(inputData,M) {
 }
 impst = bootImpute(imp1, impOnce, nBoot=nBoot, nImp = nImp, M = nImp)
 
-imp_complete = complete(mice(inputData, m=M, maxit = 20, print = F, method = "norm", predictorMatrix = predM))
+imp_complete = complete(mice(imp1, m=20, maxit = 20, print = F, method = "norm", predictorMatrix = predM))
 
 t1 = nCalib + 1
 t2 = nCalib + nMain
@@ -51,7 +51,7 @@ analyseImp <- function(inputData) {
   inputData2 = inputData[t1:t2,]
   coef(lm(model,data=inputData2))
 }
-resultt = bootImputeAnalyse(impst, analyseImp)
+resultt = bootImputeAnalyse(impst, analyseImp, quiet = TRUE)
 
 
 return(list(impst = impst, imp_complete = imp_complete, result = resultt))

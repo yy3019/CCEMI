@@ -30,13 +30,10 @@ Multiple Imputation of More than One Exposure with Non-differential Measurement 
 Constrained Iterative Conditional Imputation (CICI) treats the true concentrations in the new samples as missing and utilize multiple imputation to fill in these values based on the non-differential measurement error (NDME) assumption.
 }
 \examples{
-CICI(df1)
+see \url{https://github.com/yy3019/CICI}
 }
 \references{
-\url{https://github.com/yihui/rmini}
-}
-\seealso{
-\code{\link[tools]{file_ext}}, \code{\link[tools]{file_path_sans_ext}}
+\url{https://github.com/yy3019/CICI}
 }
 \author{
 Yuanzhi Yu, Qixuan Chen

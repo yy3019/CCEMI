@@ -14,9 +14,8 @@
 #' @param seed An integer that is used as argument by the set.seed() for offsetting the random number generator. Default is to leave the random number generator alone.
 #' @return impst: A list of imputed datasets. imp_complete: Complete imputed data. result: Point estimate, ci, variance
 #' @author Yuanzhi Yu, Qixuan Chen
-#' @seealso \code{\link[tools]{file_ext}}, \code{\link[tools]{file_path_sans_ext}}
 #' @references \url{https://github.com/yy3019/CICI}
-#' @importFrom bootImpute mice
+#' @importFrom bootImpute mice AER
 #' @export
 #' @examples see \url{https://github.com/yy3019/CICI}
 #' @name CICI

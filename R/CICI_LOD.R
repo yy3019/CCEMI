@@ -17,7 +17,7 @@
 #' @return impst: A list of imputed datasets. imp_complete: Complete imputed data. result: Point estimate, ci, variance
 #' @author Yuanzhi Yu, Qixuan Chen
 #' @references \url{https://github.com/yy3019/CICI}
-#' @importFrom bootImpute mice AER
+#' @importFrom bootImpute mice AER MCMCglmm
 #' @export
 #' @examples see \url{https://github.com/yy3019/CICI}
 #' @name CICI_LOD
@@ -25,9 +25,10 @@
 #'
 
 
-
 library(bootImpute)
 library(mice)
+library(AER)
+library(MCMCglmm)
 
 CICI_LOD = function(data, predM, nCalib, nMain, model, method, upper_bound, nImp = 2, nBoot = 20, seed = NA){
 imp2 = data %>% as.tibble()

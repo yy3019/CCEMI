@@ -16,5 +16,6 @@ LazyData: true
 Imports: 
     bootImpute,
     mice,
-    AER
+    AER,
+    MCMCglmm
 RoxygenNote: 7.2.1

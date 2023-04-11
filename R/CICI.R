@@ -28,7 +28,7 @@
 library(bootImpute)
 library(mice)
 
-CICI = function(data, predM, nCalib, nMain, model, nImp = 2, nBoot = 20, ...){
+CCEMI = function(data, predM, nCalib, nMain, model, nImp = 2, nBoot = 20, ...){
 
 imp1 = data %>% as.tibble()
 

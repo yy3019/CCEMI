@@ -1,4 +1,4 @@
-CICI
+CCEMI
 ================
 
 ### Generate data
@@ -122,19 +122,19 @@ cbind(fit_c$coefficients,fit_c %>% confint())
     ## x3[101:400] 0.50317793  0.3809808 0.6253750
     ## z[101:400]  0.35112224  0.2244285 0.4778160
 
-### Download CICI package from github
+### Download CCEMI package from github
 
 ``` r
 #library(devtools)
-#devtools::install_github('yy3019/CICI')
+#devtools::install_github('yy3019/CCEMI')
 ```
 
-### CICI Example
+### CCEMI Example
 
 #### For scenario a, b, c
 
 ``` r
-library(CICI)
+library(CCEMI)
 #### Set Imputation number (normally set as 2, default is 2)
 bn = 2
 
@@ -156,7 +156,7 @@ nCalib = 100
 nMain = 300
 
 
-t1 = CICI(data = imp1, predM = predM, nCalib = nCalib, nMain = nMain, model = m1, nImp = bn, nBoot = 200)
+t1 = CCEMI(data = imp1, predM = predM, nCalib = nCalib, nMain = nMain, model = m1, nImp = bn, nBoot = 200)
 
 #### Imputed dataset (N = nImp * nBoot)
 # t1$impst 
@@ -185,7 +185,7 @@ t1$result
     ## $df
     ## [1] 75.92131 68.26021 53.64935 47.98733 39.33572
 
-### CICI_LOD Example
+### CCEMI_LOD Example
 
 ``` r
 #### Set "method" to specify the variable that we want to use tobit regression to impute
@@ -196,7 +196,7 @@ upper_bound = pp
 
 #### Others keep the same
 
-t2 = CICI_LOD(data = imp2, predM = predM, nCalib = nCalib, nMain = nMain, model = m1, method = method1, upper_bound = upper_bound, nImp = bn, nBoot = 200)
+t2 = CCEMI_LOD(data = imp2, predM = predM, nCalib = nCalib, nMain = nMain, model = m1, method = method1, upper_bound = upper_bound, nImp = bn, nBoot = 200)
 
 t2$result
 ```

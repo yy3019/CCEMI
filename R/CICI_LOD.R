@@ -30,7 +30,7 @@ library(mice)
 library(AER)
 library(MCMCglmm)
 
-CICI_LOD = function(data, predM, nCalib, nMain, model, method, upper_bound, nImp = 2, nBoot = 20, seed = NA){
+CCEMI_LOD = function(data, predM, nCalib, nMain, model, method, upper_bound, nImp = 2, nBoot = 20, seed = NA){
 imp2 = data %>% as.tibble()
 impOnce <- function(inputData,M) {
   miceImps <- mice::mice(inputData, m=M, maxit = 20, print = F, method = method, predictorMatrix = predM, upper_bound = upper_bound, type_c = colnames(imp2)) #, remove.collinear = FALSE

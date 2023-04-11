@@ -30,7 +30,7 @@
 library(bootImpute)
 library(mice)
 
-CICI_LOD = function(data, predM, nCalib, nMain, model, method, upper_bound, nImp = 2, nBoot = 20, seed = NA){
+CCEMI_LOD = function(data, predM, nCalib, nMain, model, method, upper_bound, nImp = 2, nBoot = 20, seed = NA){
 
   mice.impute.RUTR = function(y, ry, type, x, wy = NULL, upper_bound, type_c,...){
 

@@ -1,7 +1,7 @@
-Package: CICI
+Package: CCEMI
 Type: Package
 Title: Multiple Imputation of More than One Exposure with Non-differential Measurement Error
-Version: 0.1.0
+Version: 0.2.0
 Author: Yuanzhi Yu, Qixuan Chen
 Maintainer: Yuanzhi Yu <yuanzhi.yu@northwestern.edu>
 Authors@R: 

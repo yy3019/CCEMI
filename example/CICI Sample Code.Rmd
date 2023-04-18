@@ -1,5 +1,5 @@
 ---
-title: "CICI"
+title: "CCEMI"
 output: github_document
 ---
 
@@ -124,31 +124,39 @@ cbind(fit_c$coefficients,fit_c %>% confint())
 
 ### Download CICI package from github
 
-```{r}
+```{r, echo=FALSE}
 #library(devtools)
-#devtools::install_github('yy3019/CICI')
+devtools::install_github('yy3019/CCEMI', force = TRUE)
 ```
 
 
 
 ### CICI Example 
 
+#### Imputation Matrix
 
-#### For scenario a, b, c
+Four imputation matrices, applying constraints of the strong NDME assumptions, used in the constrained CEMI method for correcting measurement errors in the main study sample: (a) external design with a common calibration data for all $X$s, (b) external design with different calibration data for each $X$, (c) internal design, and (d) external design with a common calibration sample and some measures of $\boldsymbol{W}$ in the main study data below LODs.
+
+<img src="fig2.png" width = "300">
+
+
+
+
+#### For scenario a, we use CCEMI and Imputation Matrix a
 ```{r}
-library(CICI)
+library(CCEMI)
 #### Set Imputation number (normally set as 2, default is 2)
 bn = 2
 
 #### Set PredMatrix
-predM = rbind(c(0,0,0,1,0,0,0,0), 
-              c(0,0,0,0,1,0,0,0), 
-              c(0,0,0,0,0,1,0,0),
-              c(1,0,0,0,1,1,1,1), 
-              c(0,1,0,1,0,1,1,1), 
-              c(0,0,1,1,1,0,1,1), 
-              c(0,0,0,1,1,1,0,1),
-              c(0,0,0,1,1,1,1,0))
+predM = rbind(c(0,0,0,0,0,0,0,0), # w1
+              c(0,0,0,0,0,0,0,0), # w2
+              c(0,0,0,0,0,0,0,0), # w3
+              c(1,1,1,0,1,1,1,1), # x1
+              c(1,1,1,1,0,1,1,1), # x2
+              c(1,1,1,1,1,0,1,1), # x3
+              c(0,0,0,1,1,1,0,1), # y
+              c(0,0,0,1,1,1,1,0)) # z
 
 #### Specify model
 m1 = "y ~ x1 + x2 + x3 + z"
@@ -158,7 +166,7 @@ nCalib = 100
 nMain = 300
 
 
-t1 = CICI(data = imp1, predM = predM, nCalib = nCalib, nMain = nMain, model = m1, nImp = bn, nBoot = 200)
+t1 = CCEMI(data = imp1, predM = predM, nCalib = nCalib, nMain = nMain, model = m1, nImp = bn, nBoot = 200)
 
 #### Imputed dataset (N = nImp * nBoot)
 # t1$impst 

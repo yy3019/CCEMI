@@ -3,7 +3,7 @@ CCEMI
 
 ### Data structure (scenario a, b, c, d, e)
 
-<img src="fig1.png" width = "400">
+<img src="fig1.png" width = "600">
 
 Three study designs using calibration data for correcting measurement
 errors in the main study sample: (a) external design with common
@@ -24,7 +24,7 @@ calibration data for each $X$, (c) internal design, and (d) external
 design with a common calibration sample and some measures of
 $\boldsymbol{W}$ in the main study data below LODs.
 
-<img src="fig2.png" width = "500">
+<img src="fig2.png" width = "700">
 
 For different scenarios, we may use different Imputation matrixs, here
 are two examples for scenario a and scenario e.
